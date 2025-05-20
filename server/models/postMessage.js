@@ -1,21 +1,15 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
-    title:String,
-    message:String,
-    creator:String,
-    tags: [String],
-    selectedFile:String,
-    likeCount:{
-        type:Number,
-        default:0
-    },
-    createdAt:{
-        type:Date,
-        default:new Date()
-    },
+  creator: String,
+  title: String,
+  message: String,
+  tags: String,
+  selectedFile: String,
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
-const PostMessage = mongoose.model('PostMessage',postSchema);
-
-export default PostMessage;
+export default mongoose.model('PostMessage', postSchema);
