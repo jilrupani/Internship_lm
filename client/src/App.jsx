@@ -6,7 +6,7 @@ import {getPosts} from './actions/posts.jsx'
 import Posts from './components/Posts/Posts.jsx';
 import Form from './components/Form/Form.jsx';
 import memories from '../src/images/memories.png';
-import useStyles from './styles.js';
+import useStyles from './styles.jsx';
 
  const App = () => {
   const classes= useStyles();
