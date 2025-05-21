@@ -1,8 +1,10 @@
 import React from 'react'
-import useStyles from './styles.js';
+import {Card, CardActions, CardContent, CardMedia, Button,Typography} from '@mui/material'
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+// import useStyles from './styles.js';
 
 function Post() {
-    const classes = useStyles();
+    // const classes = useStyles();
   return (
     <div className={classes.card}>
       post
