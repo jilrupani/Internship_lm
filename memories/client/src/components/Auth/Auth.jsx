@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Input from './Input.jsx';
-import Icon from './Icon.jsx';
+import Icon from './icon.jsx';
 import { GoogleLogin } from '@react-oauth/google';
 // import jwt_decode from 'jwt-decode';
 import { jwtDecode } from 'jwt-decode'; // ✅ Use named import
