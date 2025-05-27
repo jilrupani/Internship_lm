@@ -19,7 +19,9 @@ app.use('/posts',postRoutes);
 app.use('/user',userRoutes);
 // const  CONNECTION_URL = "mongodb+srv://jilrupani04:jilrupani04@cluster0.7a7wjpb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const PORT = process.env.PORT || 5000;
-
+app.get('/',(req,res)=>{
+    res.send('Hello to Memories API.');
+})
 mongoose.connect(process.env.CONNECTION_URL,{useNewURLParser : true, useUnifiedTopology: true})
     .then(() => { app.listen(PORT, () => console.log(`server running on port : ${PORT}`))   })
     .catch((err)=>{ console.log(err);
