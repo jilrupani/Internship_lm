@@ -1,34 +1,28 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import bodyParset from 'body-parser';
+import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
-import { connectDB } from './utils/Connection.js';
+import userRoutes from './routes/users.js';
 
 const app = express();
+dotenv.config();
+app.use(cors());
 
-// Middleware
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({
-  origin: '*',
-  method: ['GET','POST','PUT','DELETE'],
-  allowedHeaders: ['content-Type','Authorization'],
-}));
+
+app.use(bodyParset.json({ limit:"30mb",extended: true}));
+app.use(bodyParset.urlencoded({ limit:"30mb",extended: true}));
 app.use(express.json());
 
-// API routes
-app.use('/apiv1', postRoutes);
+app.use('/posts',postRoutes);
+app.use('/user',userRoutes);
+// const  CONNECTION_URL = "mongodb+srv://jilrupani04:jilrupani04@cluster0.7a7wjpb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const PORT = process.env.PORT || 5000;
 
-// Root
-app.get('/', (req, res) => {
-  res.send('Welcome to the Vision Luxury Villa API');
-});
+mongoose.connect(process.env.CONNECTION_URL,{useNewURLParser : true, useUnifiedTopology: true})
+    .then(() => { app.listen(PORT, () => console.log(`server running on port : ${PORT}`))   })
+    .catch((err)=>{ console.log(err);
+})
 
-// Connect DB
-connectDB();
-
-// Start server
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
-});
+// mongoose.set('useFindAndModify', false);
