@@ -4,11 +4,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Input from './Input.jsx';
 import Icon from './icon.jsx';
 import { GoogleLogin } from '@react-oauth/google';
-// import jwt_decode from 'jwt-decode';
 import { jwtDecode } from 'jwt-decode'; // ✅ Use named import
-// import {useHistory} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {signin,signup} from '../../actions/auth'
+import { toast } from 'react-toastify';
 
 import { useDispatch } from 'react-redux';
 import useStyles from './styles.js';
@@ -24,14 +23,56 @@ function Auth() {
   const navigate = useNavigate();
 
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // handle form submit logic
+  //   if(isSignup){
+  //     dispatch(signup(formData,navigate))
+  //   }else{
+  //     dispatch(signin(formData,navigate))
+  //   }
+  // };
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
     // handle form submit logic
+    // console.log(formData);
+
+    let res;
     if(isSignup){
-      dispatch(signup(formData,navigate))
-    }else{
-      dispatch(signin(formData,navigate))
+      res = await dispatch(signup(formData));
+      if (res?.success) {
+      toast.success('🎉 Registration successful!', {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "dark",
+      });
+      setTimeout(() => navigate('/posts'), 500);
+    } else {
+      toast.error(res?.message || 'Signup failed', {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "dark",
+      });
     }
+    } else {
+      res = await dispatch(signin(formData));
+      if (res?.success) {
+      toast.success('🦄 Signed in successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "dark",
+      });
+      setTimeout(() => navigate('/posts'), 500);
+    } else {
+      toast.error(res?.message || 'Signin failed', {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "dark",
+      });
+    }
+    }
+    
   };
 
   const handleChange = (e) => {
@@ -71,7 +112,7 @@ function Auth() {
         </Avatar>
         <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+          <Grid  spacing={2}>
             {isSignup && (
               <>
                 <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />

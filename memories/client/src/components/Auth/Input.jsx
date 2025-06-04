@@ -5,8 +5,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const Input = ({name,half,handleChange,label,autoFocus,type,handleShowPassword}) => {
   return (
-    <Grid item xs={12} sm={half ? 6 : 12}>
-        <TextField
+    <Grid container xs={12} sm={half ? 6 : 12}>
+        <TextField style={{margin:'5px'}}
             name={name}
             onChange={handleChange}
             varient="outlined"

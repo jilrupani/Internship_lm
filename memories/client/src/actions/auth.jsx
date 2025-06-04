@@ -7,10 +7,10 @@ export const signin = (formData,navigate) => async (dispatch) => {
         const { data} = await api.signIn(formData);
 
         dispatch({type:AUTH, data});
-        //log in the user..
-        navigate('/')
+        return {success:true}
     } catch (error) {
         console.log(error);
+        return {success:false , message:('Username and Password Incorrect! Please Try Again')}
     }
 };
 
@@ -20,10 +20,10 @@ export const signup = (formData,navigate) => async (dispatch) => {
 
         dispatch({type:AUTH, data});
         
-        //log up the user..
-        navigate('/')
+        return {success:true}
     } catch (error) {
         console.log(error);
+        return {success:false ,message:('Something went wrong! please try again')}
     }
 };
 

@@ -1,43 +1,93 @@
 import { makeStyles } from '@mui/styles';
-import { deepPurple } from '@mui/material/colors';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   appBar: {
+    boxShadow: 'none',
     borderRadius: 15,
-    margin: '30px 0',
+    padding: '10px 10px 10px 0px',
+    margin: '10px 0',
+    backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 50px',
+    flexDirection: 'row !important'
   },
-  heading: {
-    color: 'rgba(0,183,255, 1)',
-    textDecoration: 'none',
-  },
-  image: {
-    marginLeft: '15px',
-  },
+
   toolbar: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    width: '400px',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    maxWidth: '1200px',
+    width: '100%',
+    margin: '0 auto',
+    [theme.breakpoints.down('md')]: {
+      // flexWrap: 'wrap',
+      flexDirection: 'column',
+      // justifyContent: 'flex-start',
+    }
   },
+
+  leftSide: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    textDecoration: 'none',
+    height: '80px',
+  },
+
+  logo: {
+    height: '90px',
+    width: '90px',
+    // objectFit: 'contain',
+  },
+
+  textImage: {
+    height: '70px',
+    objectFit: 'contain',
+    textDecoration: 'none',
+    color: `${theme.palette.text.logo} !important`,
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    }
+  },
+
   profile: {
     display: 'flex',
-    justifyContent: 'space-between',
-    width: '400px',
+    justifyContent: 'center',
+    // justifyContent: 'space-around ',
+    alignItems: 'center',
+    width: '100%',
+    gap: '70px',
+    marginLeft: '200px',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',  
+    }
   },
+
+  avatar: {
+    color: theme.palette.colors.avatar,
+    backgroundColor: theme.palette.colors.avatarBackground,
+  },
+
   userName: {
-    display: 'flex',
-    alignItems: 'center',
+    fontWeight: 1000,
+    color: theme.palette.text.title,
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    }
   },
-  brandContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  purple: {
-    // color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-  },
+
+  logout: {
+    backgroundColor: `${theme.palette.button.background} !important`,
+    border: `5px solid ${theme.palette.button.border} !important`,
+    borderRadius: '15px !important',
+    height: '50px',
+    width: '150px',
+    color: `${theme.palette.button.text} !important`,
+    '&:hover': {
+      backgroundColor: `${theme.palette.button.hover} !important`,
+      color: `${theme.palette.button.hoverText} !important`,
+      fontWeight: 'bold !important' , 
+    },
+},
+
+
 }));
