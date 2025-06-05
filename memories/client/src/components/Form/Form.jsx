@@ -73,7 +73,15 @@ function Form({currentId, setCurrentId }) {
               onDone={({base64})=>setPostData({...postData,selectedFile:base64})}
               />
           </div>
-
+          {postData.selectedFile && (
+            <div style={{ textAlign: 'center', margin: '10px 0' }}>
+              <img
+                src={postData.selectedFile}
+                alt="Preview"
+                style={{ maxWidth: '100%', maxHeight: '200px', borderRadius: '8px' }}
+              />
+            </div>
+          )}.
           <Button 
           className={classes.buttonSubmit}
            variant="contained" size="large" type='submit' fullWidth>Submit</Button>

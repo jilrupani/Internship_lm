@@ -114,7 +114,7 @@
       color: `${theme.card.text} !important`,
     },
     title: {
-      margin: '10px 16px 0 16px',
+      margin: '10px 16px 10px 16px !important',
       fontWeight: 600,
       fontSize: '25px !important',
       fontFamily: 'Arial, sans-serif',

@@ -42,7 +42,7 @@ export default makeStyles((theme) => ({
   textImage: {
     height: '70px',
     objectFit: 'contain',
-    textDecoration: 'none',
+    textDecoration: 'none !important',
     color: `${theme.palette.text.logo} !important`,
     [theme.breakpoints.down('md')]: {
       display: 'none',

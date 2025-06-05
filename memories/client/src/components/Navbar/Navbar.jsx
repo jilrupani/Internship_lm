@@ -55,8 +55,10 @@ export const Navbar = () => {
     <AppBar className={classes.appBar} position="static" elevation={0}    >
       <Toolbar className={classes.toolbar} >
         <div className={classes.leftSide}>
-        <img className={classes.logo} src={memories} alt="memories" height="60" />
-        <Typography component={Link} to="/" className={classes.textImage} variant="h2" align="center">Memories</Typography>
+        <Link to='/' >
+        <img className={classes.logo} src={memories}  alt="memories" height="60" />
+        </Link>
+        <Typography component={Link} to='/' className={classes.textImage} variant="h2" align="center">Memories</Typography>
         </div>
       </Toolbar>
           {user ? (
