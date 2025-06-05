@@ -81,7 +81,7 @@ function Form({currentId, setCurrentId }) {
                 style={{ maxWidth: '100%', maxHeight: '200px', borderRadius: '8px' }}
               />
             </div>
-          )}.
+          )}
           <Button 
           className={classes.buttonSubmit}
            variant="contained" size="large" type='submit' fullWidth>Submit</Button>
